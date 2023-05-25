@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Room</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/chatRoom.css">
+</head>
+<body>
+<header th:replace="~{fragments/logged-in-header :: logged-in-header}"></header>
+
+<main class="margin-top">
+  <h3 class="margin-top">Chat Room</h3>
+  <section>
+    <div th:if="${chatList.isEmpty()}">No message to display</div>
+    <div th:if="${!chatList.isEmpty()}">
+      <ul>
+        <li th:each="chat: ${chatList}">
+          <span class="new-line">
+            <img style="width: 30px; height: 30px" th:src="${chat.getSender().getProfilePictureUrl()}">
+          <i th:text="'on ' + ${chat.getCreatedAt()}
+           + ', ' +
+           ${chat.getSender().getUsername()} + ' wrote:'"></i>
+            </span>
+          <br>
+          <span th:style="'color:' + ${chat.getSender().getChatColor()}" class="new-line" th:text="${chat.getMessage()}"></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <form method="post" action="/send-message">
+    <div>
+      <textarea placeholder="write something..." name="message" required></textarea>
+    </div>
+
+    <!---<input type="hidden" name="id from java">--->
+   <div>
+      <button class="button chocolate-theme" type="submit">Send Message</button>
+    </div>
+
+  </form>
+  <section th:if="${status != null}">
+    <div th:if="${status== 'REGISTER_SUCCESS'}">
+      <span class="green-theme">Account created successfully, please log in to continue</span>
+    </div>
+    <div th:if="${status == 'LOGIN_FAILED'}">
+      <span class="red-theme" th:text="${message}"></span>
+    </div>
+  </section>
+</main>
+</body>
+</html>

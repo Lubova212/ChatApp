@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/register.css">
+</head>
+<body>
+    <header th:replace="~{fragments/header :: not-logged-in-header}"></header>
+
+<main class="margin-top">
+    <h3 class="margin-top">Create an account</h3>
+    <form action="/register" method="post">
+        <div>
+            <label>Enter your full name</label>
+            <input name="fullName" type="text" required>
+        </div>
+        <div>
+            <label>Enter your username</label>
+            <input name="username" minlength="3" type="text" required>
+        </div>
+        <div>
+            <label>Enter your password</label>
+            <input name="password" minlength="4" type="text" required>
+        </div>
+        <div>
+            <label>Enter your e-mail</label>
+            <input name="email" type="email" required>
+        </div>
+        <div>
+            <label>Enter your Location</label>
+            <input name="location" type="text" required>
+        </div>
+        <div>
+            <label>Enter your Date of Birth</label>
+            <input name="dateOfBirth" type="date" required>
+        </div>
+        <div>
+            <label>Enter your chat color</label>
+            <input name="chatColor" type="color" required>
+        </div>
+        <div>
+            <label>Enter your profile picture url</label>
+            <input name="profilePictureUrl" type="url" required>
+        </div>
+        <div>
+            <button class="button chocolate-theme" type="submit">Register</button>
+            <button class="button red-theme" type="reset">Clear form</button>
+        </div>
+
+    </form>
+
+</main>
+
+</body>
+</html>

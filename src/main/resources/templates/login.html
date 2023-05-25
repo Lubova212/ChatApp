@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In</title>
+    <link href="styles/main.css" rel="stylesheet">
+    <link href="styles/login.css" rel="stylesheet">
+</head>
+<body>
+<header th:replace="~{fragments/header :: not-logged-in-header}"></header>
+<main class="margin-top">
+    <h3 class="margin-top">Sign In</h3>
+    <form method="post" action="/login">
+        <div>
+            <label>Enter your username</label>
+            <input name="username" minlength="3" type="text" required>
+        </div>
+        <div>
+            <label>Enter your password</label>
+            <input name="password" minlength="4" type="password" required>
+        </div>
+        <div>
+            <button class="button chocolate-theme" type="submit">Login</button>
+            <button class="button red-theme" type="reset">clear form</button>
+        </div>
+    </form>
+    <section th:if="${status != null}">
+        <div th:if="${status == 'REGISTER_SUCCESS'}">
+            <span class="green-theme">Account created successfully, Please login to continue</span>
+        </div>
+        <div th:if="${status == 'LOGIN_FAILED' || status == 'CHAT_ROOM_ERROR'}">
+            <span class="red-theme" th:text="${message}"></span>
+        </div>
+    </section>
+</main>
+</body>
+</html>

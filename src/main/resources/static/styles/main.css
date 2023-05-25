@@ -1,0 +1,32 @@
+h1 {
+    color: chocolate;
+}
+
+.links {
+    text-decoration: none;
+    background: white;
+    color: chocolate;
+    padding: 2px;
+    margin: 2px;
+
+    border-bottom: 2px solid chocolate;
+}
+
+.margin-top{
+    margin-top: 10px;
+}
+
+img {
+    width: 60px;
+    height: auto;
+    border-radius: 50%;
+}
+
+header{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.inline {
+    display: inline-block;
+}
